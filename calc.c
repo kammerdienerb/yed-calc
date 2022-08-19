@@ -1052,7 +1052,7 @@ static void line_pre_draw_handler(yed_event *event) {
 
     if (event->row == 2 && start != NULL && !success) {
         a = yed_active_style_get_attention();
-        array_traverse(event->line_attrs, ait) {
+        array_traverse(event->eline_attrs, ait) {
             yed_combine_attrs(ait, &a);
         }
     }

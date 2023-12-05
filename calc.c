@@ -702,9 +702,9 @@ static int eval_expr(calc_expr_t *expr, calc_val_t *val) {
                             ? TYPE_FLOAT
                             : TYPE_INT;
 
-            if (expr->op.op == OP_DIV || expr->op.op == OP_IDIV) {
+            if (expr->op.op == OP_DIV || expr->op.op == OP_MOD || expr->op.op == OP_IDIV) {
                 if ((rval.type == TYPE_INT && ri == 0) || rf == 0.0) {
-                    SET_ERR_AT(expr->str_off, "divide by zero");
+                    SET_ERR_AT(expr->str_off, expr->op.op == OP_MOD ? "modulus by zero" : "divide by zero");
                     return 0;
                 }
             }
